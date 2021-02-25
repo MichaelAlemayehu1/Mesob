@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greyBg"
+    tools:context=".RestaurantDetailsActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--    AppBar-->
+            <RelativeLayout
+                android:id="@+id/appBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_rectangle_1"
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
+
+                <TextView
+                    android:id="@+id/restaurantName"
+                    android:layout_width="159dp"
+                    android:layout_height="67dp"
+                    android:layout_marginStart="30dp"
+                    android:gravity="center_vertical"
+                    android:shadowColor="@color/black"
+                    android:text="@string/restaurant_name"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/backBtn"
+                    android:layout_width="42dp"
+                    android:layout_height="64dp"
+                    android:layout_marginStart="127dp"
+                    android:layout_toEndOf="@id/restaurantName"
+                    android:contentDescription="@string/back_button_description"
+                    app:srcCompat="@drawable/ic_keyboard_backspace_24px" />
+
+            </RelativeLayout>
+
+            <!--    Restaurant Slideshow-->
+            <RelativeLayout
+                android:id="@+id/restaurantSlideshow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/appBar">
+
+                <!--                replace with actual buttons-->
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/slideshowViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="187dp" />
+
+                <me.relex.circleindicator.CircleIndicator
+                    android:id="@+id/circleIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/slideshowViewPager"
+                    app:ci_drawable="@drawable/ic_slideshow_button_selected"
+                    app:ci_drawable_unselected="@drawable/ic_slideshow_button" />
+
+
+            </RelativeLayout>
+
+            <!--    Contact Buttons-->
+            <RelativeLayout
+                android:id="@+id/contactButtons"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/restaurantSlideshow"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/callBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/greyBg"
+                    android:contentDescription="@string/call_button_description"
+                    android:src="@drawable/ic_phone_button" />
+
+                <ImageButton
+                    android:id="@+id/locateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/callBtn"
+                    android:background="@color/greyBg"
+                    android:contentDescription="@string/locate_button_description"
+                    android:src="@drawable/ic_location_button" />
+            </RelativeLayout>
+
+            <!--    Menu Card-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/menuCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/contactButtons"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="38dp"
+                app:cardElevation="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/cardTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="35dp"
+                        android:text="Menu"
+                        android:textSize="25sp" />
+
+                    <!--        Food Item Card-->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/foodItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cardTitle"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:clickable="true"
+                        app:cardBackgroundColor="@color/shiro"
+                        app:cardElevation="6dp"
+                        app:rippleColor="@color/shiro">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <!-- Food Image -->
+                            <ImageView
+                                android:id="@+id/foodImage"
+                                android:layout_width="150dp"
+                                android:layout_height="200dp"
+                                android:layout_marginEnd="40dp"
+                                android:foregroundGravity="right"
+                                android:src="@drawable/firfir" />
+
+                            <!-- Food Name -->
+                            <TextView
+                                android:id="@+id/foodName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="30dp"
+                                android:layout_toRightOf="@id/foodImage"
+                                android:text="Firfir"
+                                android:textAppearance="?attr/textAppearanceHeadline5" />
+
+                            <!-- Food Price -->
+                            <TextView
+                                android:id="@+id/foodPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/foodName"
+                                android:layout_marginTop="20dp"
+                                android:layout_toRightOf="@id/foodImage"
+                                android:text="150 Br."
+                                android:textAppearance="?attr/textAppearanceBody2" />
+
+                            <!-- Star Rating -->
+                            <LinearLayout
+                                android:id="@+id/star_rating"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/foodPrice"
+                                android:layout_marginStart="-15dp"
+                                android:layout_marginTop="27dp"
+                                android:layout_toRightOf="@id/foodImage"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_star_24px" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_star_24px" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_star_24px" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_star_half_24px" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_star_border_24px" />
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!--                replace with card and button-->
+                    <ImageButton
+                        android:id="@+id/read_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/foodItem"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginBottom="40dp"
+                        android:background="@color/transparent"
+                        android:clickable="true"
+                        android:onClick="openMenuDetailed"
+                        android:src="@drawable/read_more" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!--    Comments Card-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/commentsCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/menuCard"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="60dp"
+                app:cardCornerRadius="38dp"
+                app:cardElevation="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/cardTitle2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="35dp"
+                        android:text="Comments"
+                        android:textSize="25sp" />
+
+                    <!-- comments item -->
+                    <LinearLayout
+                        android:id="@+id/commentItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cardTitle2"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical">
+
+                        <!-- Commentator Profile -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/userImage"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ramen" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@id/userImage"
+                                android:text="Haile"
+                                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+
+                            <!-- Star Rating -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/userImage"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_star_24px" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_star_24px" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_star_24px" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_star_half_24px" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_star_border_24px" />
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+                        <!-- Comment box -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:elevation="100dp"
+                            app:cardCornerRadius="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:padding="10dp"
+                                android:elevation="20dp"
+                                android:text="Great Food"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                    <!--                replace with card and button-->
+                    <ImageButton
+                        android:id="@+id/read_more2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/commentItem"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginBottom="40dp"
+                        android:background="@color/transparent"
+                        android:clickable="true"
+                        android:onClick="openCommentsDetailed"
+                        android:src="@drawable/read_more" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

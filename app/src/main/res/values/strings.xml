@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">loginMain</string>
+    <string name="name">Name</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="register_here">Register Here</string>
+    <string name="login">Login</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="login_into_existing_account">Login to existing account</string>
+
+    <string name="restaurant_name">Restaurant Name</string>
+    <string name="back_button_description">Back Button</string>
+    <string name="locate_button_description">Locate Button</string>
+    <string name="call_button_description">Call Button</string>
+    <string name="restaurant_image_description">Restaurant Image</string>
+    <string name="slideshow_buttons_description">Slideshow Buttons</string>
+
+    <string name="search">Search</string>
+    <string name="categories">Categories</string>
+    <string name="newSort">New</string>
+    <string name="popular">Popular</string>
+    <string name="cost">Cost Day!!!</string>
+    <string name="noCost">Waiting for Cost</string>
+
+</resources>

@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RestaurantMenuDetailsActivity"
+    android:background="@color/greyBg">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/menuCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        app:cardCornerRadius="38dp"
+        app:cardElevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/cardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="35dp"
+                    android:text="Menu"
+                    android:textSize="25sp" />
+
+                <!--        Food Item Card-->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/shiro"
+                    app:cardElevation="6dp"
+                    app:rippleColor="@color/shiro">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- Food Image -->
+                        <ImageView
+                            android:id="@+id/foodImage"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"
+                            android:layout_marginEnd="40dp"
+                            android:foregroundGravity="right"
+                            android:src="@drawable/firfir" />
+
+                        <!-- Food Name -->
+                        <TextView
+                            android:id="@+id/foodName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:text="Firfir"
+                            android:textAppearance="?attr/textAppearanceHeadline5" />
+
+                        <!-- Food Price -->
+                        <TextView
+                            android:id="@+id/foodPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/foodName"
+                            android:layout_marginTop="20dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:text="150 Br."
+                            android:textAppearance="?attr/textAppearanceBody2" />
+
+                        <!-- Star Rating -->
+                        <LinearLayout
+                            android:id="@+id/star_rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/foodPrice"
+                            android:layout_marginStart="-15dp"
+                            android:layout_marginTop="27dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_half_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_border_24px" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!--        Food Item Card-->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/shiro"
+                    app:cardElevation="6dp"
+                    app:rippleColor="@color/shiro">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- Food Image -->
+                        <ImageView
+                            android:id="@+id/foodImage"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"
+                            android:layout_marginEnd="40dp"
+                            android:foregroundGravity="right"
+                            android:src="@drawable/firfir" />
+
+                        <!-- Food Name -->
+                        <TextView
+                            android:id="@+id/foodName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:text="Firfir"
+                            android:textAppearance="?attr/textAppearanceHeadline5" />
+
+                        <!-- Food Price -->
+                        <TextView
+                            android:id="@+id/foodPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/foodName"
+                            android:layout_marginTop="20dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:text="150 Br."
+                            android:textAppearance="?attr/textAppearanceBody2" />
+
+                        <!-- Star Rating -->
+                        <LinearLayout
+                            android:id="@+id/star_rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/foodPrice"
+                            android:layout_marginStart="-15dp"
+                            android:layout_marginTop="27dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_half_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_border_24px" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!--        Food Item Card-->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/shiro"
+                    app:cardElevation="6dp"
+                    app:rippleColor="@color/shiro">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- Food Image -->
+                        <ImageView
+                            android:id="@+id/foodImage"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"
+                            android:layout_marginEnd="40dp"
+                            android:foregroundGravity="right"
+                            android:src="@drawable/firfir" />
+
+                        <!-- Food Name -->
+                        <TextView
+                            android:id="@+id/foodName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:text="Firfir"
+                            android:textAppearance="?attr/textAppearanceHeadline5" />
+
+                        <!-- Food Price -->
+                        <TextView
+                            android:id="@+id/foodPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/foodName"
+                            android:layout_marginTop="20dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:text="150 Br."
+                            android:textAppearance="?attr/textAppearanceBody2" />
+
+                        <!-- Star Rating -->
+                        <LinearLayout
+                            android:id="@+id/star_rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/foodPrice"
+                            android:layout_marginStart="-15dp"
+                            android:layout_marginTop="27dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_half_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_border_24px" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!--        Food Item Card-->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/shiro"
+                    app:cardElevation="6dp"
+                    app:rippleColor="@color/shiro">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- Food Image -->
+                        <ImageView
+                            android:id="@+id/foodImage"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"
+                            android:layout_marginEnd="40dp"
+                            android:foregroundGravity="right"
+                            android:src="@drawable/firfir" />
+
+                        <!-- Food Name -->
+                        <TextView
+                            android:id="@+id/foodName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:text="Firfir"
+                            android:textAppearance="?attr/textAppearanceHeadline5" />
+
+                        <!-- Food Price -->
+                        <TextView
+                            android:id="@+id/foodPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/foodName"
+                            android:layout_marginTop="20dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:text="150 Br."
+                            android:textAppearance="?attr/textAppearanceBody2" />
+
+                        <!-- Star Rating -->
+                        <LinearLayout
+                            android:id="@+id/star_rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/foodPrice"
+                            android:layout_marginStart="-15dp"
+                            android:layout_marginTop="27dp"
+                            android:layout_toRightOf="@id/foodImage"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_half_24px" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star_border_24px" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
