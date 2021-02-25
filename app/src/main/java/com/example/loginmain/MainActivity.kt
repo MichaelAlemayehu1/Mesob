@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val card = findViewById<CardView>(R.id.cardView)
+        val Login = findViewById<CardView>(R.id.cardView)
 //        val text = findViewById<TextView>(R.id.editTextTextPersonName3)
 
-        card.setOnClickListener{
+        Login.setOnClickListener{
             val i = Intent(this, RestaurantMain::class.java)
             startActivity(i)
 
@@ -36,7 +36,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(i)
 
         }
+//        val dataBase = findViewById<TextView>(R.id.data_base)
+
+//        dataBase.setOnClickListener{
+//            val i = Intent(this, DataBase::class.java)
+//            startActivity(i)
+//        }
     }
+
+
+
 
 
 

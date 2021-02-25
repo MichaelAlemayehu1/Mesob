@@ -7,7 +7,12 @@
     android:background="@drawable/gradiente"
     tools:context=".MainActivity">
 
-
+    <TextView
+        android:id="@+id/data_base"
+        android:layout_above="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click Me for Database" />
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="170dp"
@@ -26,7 +31,10 @@
       android:layout_below="@+id/imageView2"
         app:cardCornerRadius="69dp"
 
-        />
+        >
+
+
+    </androidx.cardview.widget.CardView>
 
     <EditText
         android:id="@+id/editTextTextPersonName3"

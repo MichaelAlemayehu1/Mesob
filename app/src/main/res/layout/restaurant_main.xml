@@ -200,16 +200,19 @@
         </HorizontalScrollView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/res1"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="10dp"
             app:cardCornerRadius="10dp"
+
             app:cardBackgroundColor="#FFC107">
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/res2"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:layout_marginHorizontal="20dp"
