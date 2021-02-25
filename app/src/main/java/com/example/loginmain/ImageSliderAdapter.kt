@@ -9,8 +9,9 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.viewpager.widget.PagerAdapter
+import com.squareup.picasso.Picasso
 
-class ImageSliderAdapter(var context: Context, var images: IntArray) : PagerAdapter() {
+class ImageSliderAdapter(var context: Context, var images: Array<String>) : PagerAdapter() {
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object` as RelativeLayout
@@ -22,7 +23,10 @@ class ImageSliderAdapter(var context: Context, var images: IntArray) : PagerAdap
 
     override fun instantiateItem( container: ViewGroup, position: Int): Any {
         val view = LayoutInflater.from(context).inflate(R.layout.restaurant_image_fragment, container, false)
-        view.findViewById<ImageView>(R.id.restaurantImage).setImageResource(images[position])
+        val imageView = view.findViewById<ImageView>(R.id.restaurantImage)
+        Picasso.get()
+                .load(images[position])
+                .into(imageView)
         container.addView(view, position - 1)
         return view
     }

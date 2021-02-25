@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 //        val text = findViewById<TextView>(R.id.editTextTextPersonName3)
 
         card.setOnClickListener{
-            val i = Intent(this, RestaurantMain::class.java)
+            val i = Intent(this, RestaurantDetailsActivity::class.java)
             startActivity(i)
 
             val toast = Toast.makeText(this, "Hello", Toast.LENGTH_SHORT)
