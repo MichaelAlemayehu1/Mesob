@@ -13,7 +13,7 @@
     <color name="shiro">#FFDF91</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="starGold">#FFF600</color>
-
+    <color name="head">#FFC107</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#fff</color>
 </resources>
