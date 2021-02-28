@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.cardview.widget.CardView
 import java.net.URL
 
@@ -25,5 +26,10 @@ class RestaurantMain : AppCompatActivity() {
 
     }
 
+    fun openRestaurantDetails(view : View){
+        val intent = Intent(this, RestaurantDetailsActivity::class.java)
+        intent.putExtra("retaurantId", view.id)
+
+    }
 
 }
