@@ -56,8 +56,17 @@ class RestaurantDetailsActivity : AppCompatActivity() {
     }
 
     private fun loadImages(){
+        var help = DatabaseHandler(applicationContext)
+//open db to be read
+        var db = help.readableDatabase
+        var rs = db.rawQuery("SELECT min(RESLINK) FROM  Rest WHERE RESNAME = 'NITSUH'",null)
+
         val gdImage = findViewById<ImageView>(R.id.foodImage)
-        val imageLink = "https://drive.google.com/uc?export=download&id=1TFcCHx7y-oyRK74KHFA_66ZI-naKOJvT"
+        rs.moveToNext()
+
+        val imageLink = rs.getString(0)
+        Log.e("this",rs.getString(0))
+//        val imageLink = "https://drive.google.com/uc?export=download&id=1TFcCHx7y-oyRK74KHFA_66ZI-naKOJvT"
         Picasso.get().load(imageLink).into(gdImage)
     }
 

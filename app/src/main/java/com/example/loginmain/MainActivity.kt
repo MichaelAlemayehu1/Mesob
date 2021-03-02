@@ -17,6 +17,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var help = DatabaseHandler(applicationContext)
+//open db to be read
+        var db = help.readableDatabase
+
 
         val card = findViewById<CardView>(R.id.cardView)
 //        val text = findViewById<TextView>(R.id.editTextTextPersonName3)

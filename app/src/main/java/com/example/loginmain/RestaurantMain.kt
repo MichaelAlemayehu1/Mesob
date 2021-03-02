@@ -37,7 +37,7 @@ class RestaurantMain : AppCompatActivity() {
                     val usersResponse = response.body()
                     if (usersResponse != null) {
                         for (user in usersResponse.users){
-                            Log.e("USRRSPNS", user.userName)
+                            Log.e("USRRSPNS", user.toString())
                         }
                     }
                 }
@@ -52,7 +52,7 @@ class RestaurantMain : AppCompatActivity() {
 
     fun openRestaurantDetails(view : View){
         val intent = Intent(this, RestaurantDetailsActivity::class.java)
-        intent.putExtra("restaurantId", view.id)
+        intent.putExtra("restaurantId", "view.id")
         Log.e("TheRealG", view.id.toString()?:"null")
 
         startActivity(intent)
