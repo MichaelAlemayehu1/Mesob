@@ -44,6 +44,10 @@ class RestaurantDetailsActivity : AppCompatActivity() {
     }
 
     private fun loadSlideshow(){
+        val intent = intent
+        val restaurantId = intent.getStringExtra("restaurantId")
+        Log.e("TheRealG", restaurantId as String)
+
         slideshowViewPager = findViewById<ViewPager>(R.id.slideshowViewPager)
         indicator = findViewById<CircleIndicator>(R.id.circleIndicator)
         imageSliderAdapter = ImageSliderAdapter(this, images)
