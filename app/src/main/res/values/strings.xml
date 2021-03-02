@@ -24,5 +24,7 @@
     <string name="popular">Popular</string>
     <string name="cost">Cost Day!!!</string>
     <string name="noCost">Waiting for Cost</string>
+    <string name="login_small_header">ኑ እንብላ!</string>
+    <string name="login_header">መሶብ</string>
 
 </resources>
