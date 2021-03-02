@@ -20,34 +20,6 @@ class RestaurantMain : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.restaurant_main)
-
-        var BaseUrl = "https://api.jsonbin.io/"
-
-        val retrofit = Retrofit.Builder()
-                .baseUrl(BaseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-        val service = retrofit.create(UsersService::class.java)
-        val call = service.getUsersList()
-
-        call.enqueue(object : Callback<UsersResponse>{
-            override fun onResponse(call: Call<UsersResponse>, response: Response<UsersResponse>) {
-                if(response.code() === 200){
-                    val usersResponse = response.body()
-                    if (usersResponse != null) {
-                        for (user in usersResponse.users){
-                            Log.e("USRRSPNS", user.toString())
-                        }
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
-                Log.e("USRCLL", "Call failed!")
-            }
-
-        })
     }
 
     fun openRestaurantDetails(view : View){
