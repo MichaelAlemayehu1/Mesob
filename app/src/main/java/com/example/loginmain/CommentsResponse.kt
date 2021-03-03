@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 class CommentsResponse {
     @SerializedName("comments")
-    val comments = ArrayList<Comment>()
+    var comments = ArrayList<Comment>()
 }

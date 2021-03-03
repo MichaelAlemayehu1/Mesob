@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -16,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MainActivity : AppCompatActivity() {
-
+    lateinit var users : ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +38,8 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<UsersResponse>, response: Response<UsersResponse>) {
                 if(response.code() === 200){
                     val usersResponse = response.body()
+                    users = usersResponse!!.users
+
                     if (usersResponse != null) {
                         for (user in usersResponse.users){
                             Log.e("USRRSPNS", user.userName)
@@ -54,13 +58,13 @@ class MainActivity : AppCompatActivity() {
         val card = findViewById<CardView>(R.id.cardView)
 //        val text = findViewById<TextView>(R.id.editTextTextPersonName3)
 
-        card.setOnClickListener{
-            val i = Intent(this, RestaurantMain::class.java)
-            startActivity(i)
-
-            val toast = Toast.makeText(this, "Hello", Toast.LENGTH_SHORT)
-            toast.show()
-        }
+//        card.setOnClickListener{
+//            val i = Intent(this, RestaurantMain::class.java)
+//            startActivity(i)
+//
+//            val toast = Toast.makeText(this, "Hello", Toast.LENGTH_SHORT)
+//            toast.show()
+//        }
         val card2 = findViewById<CardView>(R.id.cardView2)
 //        val text = findViewById<TextView>(R.id.editTextTextPersonName3)
 
@@ -72,6 +76,22 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    fun checkLogin(view: View){
+        val username = findViewById<EditText>(R.id.editTextTextPersonName3).text.toString()
+        val password = findViewById<EditText>(R.id.editTextTextPassword).text.toString()
+
+        for (user in users){
+            if(user.userName == username && user.password == password){
+                val intent = Intent(this, RestaurantMain::class.java)
+                intent.putExtra("UserId", username)
+                startActivity(intent)
+                return
+            }
+            else{
+                Toast.makeText(this,"Invalid username or password!", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
 
 }
