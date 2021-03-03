@@ -1,5 +1,6 @@
 package com.example.loginmain
 
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -11,6 +12,6 @@ interface CommentsService {
     fun getCommentsList() : Call<CommentsResponse>
     @Headers("content-type:application/json")
     @PUT("b/603e89e681087a6a8b94d2af")
-    fun updateCommentsList(@Body comment: CommentsResponse) : Call<CommentsResponse>
+    fun updateCommentsList(@Body comment: JSONObject) : Call<CommentsResponse>
 //    https://api.jsonbin.io/b/603e89e681087a6a8b94d2af
 }

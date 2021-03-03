@@ -2,9 +2,10 @@ package com.example.loginmain
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,6 +29,11 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
             .build()
 
         service = retrofit.create(CommentsService::class.java)
+
+        val cBtn = findViewById<Button>(R.id.commentBtn)
+        cBtn.setOnClickListener{
+            sendComment()
+        }
 
         getComment()
     }
@@ -56,7 +62,7 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
         })
     }
 
-    suspend fun sendComment(view: View){
+    private fun sendComment(){
         val commentBox = findViewById<EditText>(R.id.commentEditText)
         var comment = Comment()
 
@@ -65,12 +71,12 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
 //        Ksonbin.init(key)
 
 
-        comment.comment = commentBox.text.toString()
-        comment.userName = "Lola"
-        commentsJSONObject.add(comment)
+//        comment.comment = commentBox.text.toString()
+//        comment.userName = "Lola"
+//        commentsJSONObject.add(comment)
 
-
-//        var jsonObject = JSONObject( Gson().toJson(commentsJSONObject + mapOf("comment" to commentBox.text )) )
+        var userId = getIntent().getStringExtra("UserId")
+        var jsonObject = JSONObject( Gson().toJson(commentsJSONObject + mapOf("comment" to commentBox.text, "userName" to intent.getStringExtra("userId") )) )
 //        val updatedBin: BinUpdate<JSONObject> = Ksonbin.bin.update(binId, jsonObject, true, key)
 //        println("update bin ${binId}: $updatedBin")
 
@@ -79,7 +85,7 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
 
 
 
-        val call = service.updateCommentsList(commentsResponse)
+        val call = service.updateCommentsList(jsonObject)
 
         call.enqueue(object : Callback<CommentsResponse> {
             override fun onFailure(call: Call<CommentsResponse>, t: Throwable) {

@@ -1006,7 +1006,7 @@
                 android:background="@drawable/drawable_candy_button"
                 android:layout_marginLeft="60dp"
                 android:text="Send"
-                android:onClick="sendComment"/>
+                />
 
         </LinearLayout>
 

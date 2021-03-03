@@ -72,12 +72,16 @@ class RestaurantDetailsActivity : AppCompatActivity() {
 
 
     fun openMenuDetailed(view: View){
+        var userId = getIntent().getStringExtra("UserId")
         val intent = Intent(this, RestaurantMenuDetailsActivity::class.java)
-    startActivity(intent)
+        intent.putExtra("UserId", userId)
+        startActivity(intent)
 }
 
     fun openCommentsDetailed(view: View){
+        var userId = intent.getStringExtra("UserId")
         val intent = Intent(this, RestaurantCommentDetailsActivity::class.java)
+        intent.putExtra("UserId", userId)
         startActivity(intent)
     }
 

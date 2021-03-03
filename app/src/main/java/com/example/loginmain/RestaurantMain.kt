@@ -23,9 +23,10 @@ class RestaurantMain : AppCompatActivity() {
     }
 
     fun openRestaurantDetails(view : View){
+        val userId = getIntent().getStringExtra("UserId")
         val intent = Intent(this, RestaurantDetailsActivity::class.java)
         intent.putExtra("restaurantId", "view.id")
-        Log.e("TheRealG", view.id.toString()?:"null")
+        intent.putExtra("UserId", userId)
 
         startActivity(intent)
     }
