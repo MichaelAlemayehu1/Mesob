@@ -9,7 +9,7 @@
     <string name="last_name">Last Name</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="register">Register</string>
-    <string name="login_into_existing_account">Login to existing account</string>
+    <string name="login_into_existing_account">Have an account?, Log in</string>
 
     <string name="restaurant_name">Restaurant Name</string>
     <string name="back_button_description">Back Button</string>
