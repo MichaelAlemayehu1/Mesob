@@ -46,6 +46,7 @@
 
                 <ImageView
                     android:id="@+id/backBtn"
+                    android:onClick="Back"
                     android:layout_width="42dp"
                     android:layout_height="64dp"
                     android:layout_marginStart="127dp"

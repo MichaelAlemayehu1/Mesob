@@ -9,10 +9,12 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.viewpager.widget.ViewPager
 import com.squareup.picasso.Picasso
 import me.relex.circleindicator.CircleIndicator
+import java.util.prefs.BackingStoreException
 
 
 class RestaurantDetailsActivity : AppCompatActivity() {
@@ -33,9 +35,16 @@ class RestaurantDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_details)
 
+        val intent = intent
+        val restaurantId = intent.getStringExtra("restaurantId")
+        Log.e("TheRealG", restaurantId as String)
+        personaliseChoice(restaurantId)
         getImageLinks()
         loadSlideshow()
         loadImages()
+    }
+    fun Back(view: View){
+        val i = Intent(this,RestaurantMain::class.java)
     }
 
     private fun getImageLinks(){
@@ -44,15 +53,17 @@ class RestaurantDetailsActivity : AppCompatActivity() {
     }
 
     private fun loadSlideshow(){
-        val intent = intent
-        val restaurantId = intent.getStringExtra("restaurantId")
-        Log.e("TheRealG", restaurantId as String)
+
 
         slideshowViewPager = findViewById<ViewPager>(R.id.slideshowViewPager)
         indicator = findViewById<CircleIndicator>(R.id.circleIndicator)
         imageSliderAdapter = ImageSliderAdapter(this, images)
         slideshowViewPager.adapter = imageSliderAdapter
         indicator.setViewPager(slideshowViewPager)
+    }
+    fun personaliseChoice(restaurantId:String){
+        val choice = findViewById<TextView>(R.id.restaurantName)
+        choice.text = restaurantId
     }
 
     private fun loadImages(){
@@ -79,7 +90,7 @@ class RestaurantDetailsActivity : AppCompatActivity() {
 }
 
     fun openCommentsDetailed(view: View){
-        var userId = intent.getStringExtra("UserId")
+        var userId = getIntent().getStringExtra("UserId")
         val intent = Intent(this, RestaurantCommentDetailsActivity::class.java)
         intent.putExtra("UserId", userId)
         startActivity(intent)

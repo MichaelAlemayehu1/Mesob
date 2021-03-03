@@ -1,15 +1,16 @@
 package com.example.loginmain
 
-import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import android.widget.TextView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
 
 
         val card = findViewById<CardView>(R.id.cardView)

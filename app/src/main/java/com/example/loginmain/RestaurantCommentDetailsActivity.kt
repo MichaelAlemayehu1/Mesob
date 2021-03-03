@@ -2,9 +2,12 @@ package com.example.loginmain
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import org.json.JSONObject
 import retrofit2.Call
@@ -16,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RestaurantCommentDetailsActivity : AppCompatActivity() {
     private lateinit var service : CommentsService
     private var commentsJSONObject = ArrayList<Comment>()
+    private var comments : ArrayList<Comment>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,9 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
         }
 
         getComment()
+//        displayComment()
+
+
     }
 
     fun getComment(){
@@ -47,6 +54,8 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
                     val commentsResponse = response.body()
                     commentsJSONObject = commentsResponse!!.comments
                     if (commentsResponse != null) {
+                        comments = commentsResponse.comments
+                        displayComment(comments!!)
                         for (user in commentsResponse.comments){
                             Log.e("CMNTRSPNS", user.comment)
 //                            Log.e("CMNTRSPNS", "hey")
@@ -60,6 +69,16 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    fun displayComment(comments : ArrayList<Comment>){
+        Log.e("SSS", comments!!.first().comment)
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler)
+        val adapter = CommentRecyclerAdapter(comments)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.visibility = View.VISIBLE
+
     }
 
     private fun sendComment(){
