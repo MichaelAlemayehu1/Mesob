@@ -1,5 +1,6 @@
 package com.example.loginmain
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -19,7 +20,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RestaurantCommentDetailsActivity : AppCompatActivity() {
     private lateinit var service : CommentsService
     private var commentsJSONObject = ArrayList<Comment>()
-    private var comments : ArrayList<Comment>? = null
+    private var comments = ArrayList<Comment>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +42,7 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
         }
 
         getComment()
-//        displayComment()
+//        displayComment(comments)
 
 
     }
@@ -55,10 +57,14 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
                     commentsJSONObject = commentsResponse!!.comments
                     if (commentsResponse != null) {
                         comments = commentsResponse.comments
-                        displayComment(comments!!)
+
+                        val recyclerView = findViewById<RecyclerView>(R.id.recycler)
+                        recyclerView.layoutManager = LinearLayoutManager(baseContext)
+                        recyclerView.adapter = CommentRecyclerAdapter(commentsResponse.comments, baseContext)
+                        recyclerView.visibility = View.VISIBLE
+
                         for (user in commentsResponse.comments){
                             Log.e("CMNTRSPNS", user.comment)
-//                            Log.e("CMNTRSPNS", "hey")
                         }
                     }
                 }
@@ -71,15 +77,14 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
         })
     }
 
-    fun displayComment(comments : ArrayList<Comment>){
-        Log.e("SSS", comments!!.first().comment)
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler)
-        val adapter = CommentRecyclerAdapter(comments)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.visibility = View.VISIBLE
-
-    }
+//    fun displayComment(comments : ArrayList<Comment>){
+//        Log.e("SSS", comments!!.first().comment)
+//        val recyclerView = findViewById<RecyclerView>(R.id.recycler)
+//        recyclerView.layoutManager = LinearLayoutManager(this)
+//        recyclerView.adapter = CommentRecyclerAdapter(comments, this)
+//        recyclerView.visibility = View.VISIBLE
+//
+//    }
 
     private fun sendComment(){
         val commentBox = findViewById<EditText>(R.id.commentEditText)
@@ -95,7 +100,7 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
 //        commentsJSONObject.add(comment)
 
         var userId = getIntent().getStringExtra("UserId")
-        var jsonObject = JSONObject( Gson().toJson(commentsJSONObject + mapOf("comment" to commentBox.text, "userName" to intent.getStringExtra("userId") )) )
+        var jsonObject = JSONObject( Gson().toJson(commentsJSONObject + mapOf("comment" to commentBox.text, "userName" to userId )) )
 //        val updatedBin: BinUpdate<JSONObject> = Ksonbin.bin.update(binId, jsonObject, true, key)
 //        println("update bin ${binId}: $updatedBin")
 

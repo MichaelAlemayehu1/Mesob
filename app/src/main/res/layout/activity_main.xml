@@ -83,6 +83,8 @@
                 android:layout_marginTop="40dp"
                 app:cardBackgroundColor="#FFEB3B"
                 app:cardCornerRadius="25dp"
+                android:clickable="true"
+                android:onClick="checkLogin"
                 app:cardElevation="10dp">
 
                 <RelativeLayout
@@ -95,7 +97,6 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="@string/login"
-
                         android:textColor="#fff"
                         android:textSize="18sp" />
                 </RelativeLayout>

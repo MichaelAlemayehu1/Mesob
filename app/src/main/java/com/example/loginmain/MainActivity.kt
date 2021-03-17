@@ -1,5 +1,6 @@
 package com.example.loginmain
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +17,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
@@ -41,10 +43,9 @@ class MainActivity : AppCompatActivity() {
                     val usersResponse = response.body()
                     users = usersResponse!!.users
 
-                    if (usersResponse != null) {
-                        for (user in usersResponse.users){
-                            Log.e("USRRSPNS", user.userName)
-                        }
+
+                    for (user in usersResponse.users){
+                        Log.e("USRRSPNS", user.userName)
                     }
                 }
             }
@@ -71,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 //        val text = findViewById<TextView>(R.id.editTextTextPersonName3)
 
         card2.setOnClickListener{
-            val i = Intent(this, RegisterPage::class.java)
+            val i = Intent(this, RestaurantMain::class.java)
             startActivity(i)
 
         }
@@ -82,16 +83,21 @@ class MainActivity : AppCompatActivity() {
         val username = findViewById<EditText>(R.id.editTextTextPersonName3).text.toString()
         val password = findViewById<EditText>(R.id.editTextTextPassword).text.toString()
 
-        for (user in users){
-            if(user.userName == username && user.password == password){
-                val intent = Intent(this, RestaurantMain::class.java)
-                intent.putExtra("UserId", username)
-                startActivity(intent)
-                return
+        try {
+
+            for (user in users){
+                if(user.userName == username && user.password == password){
+                    val intent = Intent(this, RestaurantMain::class.java)
+                    intent.putExtra("UserId", username)
+                    startActivity(intent)
+                    return
+                }
+                else{
+                    Toast.makeText(this,"Invalid username or password!", Toast.LENGTH_SHORT).show()
+                }
             }
-            else{
-                Toast.makeText(this,"Invalid username or password!", Toast.LENGTH_SHORT).show()
-            }
+        }catch (e : IllegalStateException){
+            Toast.makeText(this,"Check network!", Toast.LENGTH_SHORT).show()
         }
     }
 

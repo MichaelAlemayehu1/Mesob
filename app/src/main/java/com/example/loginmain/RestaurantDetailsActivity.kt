@@ -76,7 +76,7 @@ class RestaurantDetailsActivity : AppCompatActivity() {
         rs.moveToNext()
 
         val imageLink = rs.getString(0)
-        Log.e("this",rs.getString(0))
+//        Log.e("this",rs.getString(0))
 //        val imageLink = "https://drive.google.com/uc?export=download&id=1TFcCHx7y-oyRK74KHFA_66ZI-naKOJvT"
         Picasso.get().load(imageLink).into(gdImage)
     }

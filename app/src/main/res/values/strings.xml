@@ -27,4 +27,6 @@
     <string name="login_small_header">ኑ እንብላ!</string>
     <string name="login_header">መሶብ</string>
 
+    <string name="apiKey">$2b$10$RqpIOOPAoRlRnH4oUAtsne7MxLTz3oIci39NcIIIKlv.lHivOY/oe</string>
+
 </resources>
