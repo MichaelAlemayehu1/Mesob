@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this,"Invalid username or password!", Toast.LENGTH_SHORT).show()
                 }
             }
-        }catch (e : IllegalStateException){
+        }catch (e : UninitializedPropertyAccessException){
             Toast.makeText(this,"Check network!", Toast.LENGTH_SHORT).show()
         }
     }
