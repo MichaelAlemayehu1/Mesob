@@ -29,7 +29,7 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_comment_details)
 
-        var BaseUrl = "https://api.jsonbin.io/"
+        var BaseUrl = "https://api.jsonbin.io/v3/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BaseUrl)
@@ -73,7 +73,7 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<CommentsResponse>, t: Throwable) {
-                Log.e("CMNTCLL", "Call failed!")
+                Log.e("CMNTCLL", "Call failed!" + t.message)
             }
 
         })
