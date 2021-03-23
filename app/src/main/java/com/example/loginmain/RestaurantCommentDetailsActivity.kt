@@ -52,27 +52,27 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
     fun getComment(){
         val call = service.getCommentsList()
 
-        call.enqueue(object : Callback<CommentsResponse> {
-            override fun onResponse(call: Call<CommentsResponse>, response: Response<CommentsResponse>) {
+        call.enqueue(object : Callback<CommentsResponseV3> {
+            override fun onResponse(call: Call<CommentsResponseV3>, response: Response<CommentsResponseV3>) {
                 if(response.code() === 200){
                     val commentsResponse = response.body()
-                    commentsJSONObject = commentsResponse!!.comments
+                    commentsJSONObject = commentsResponse!!.record.comments
                     if (commentsResponse != null) {
-                        comments = commentsResponse.comments
+                        comments = commentsResponse.record.comments
 
                         val recyclerView = findViewById<RecyclerView>(R.id.recycler)
                         recyclerView.layoutManager = LinearLayoutManager(baseContext)
-                        recyclerView.adapter = CommentRecyclerAdapter(commentsResponse.comments, baseContext)
+                        recyclerView.adapter = CommentRecyclerAdapter(commentsResponse.record.comments, baseContext)
                         recyclerView.visibility = View.VISIBLE
 
-                        for (user in commentsResponse.comments){
+                        for (user in commentsResponse.record.comments){
                             Log.e("CMNTRSPNS", user.comment)
                         }
                     }
                 }
             }
 
-            override fun onFailure(call: Call<CommentsResponse>, t: Throwable) {
+            override fun onFailure(call: Call<CommentsResponseV3>, t: Throwable) {
                 Log.e("CMNTCLL", "Call failed!" + t.message)
             }
 
@@ -113,6 +113,7 @@ class RestaurantCommentDetailsActivity : AppCompatActivity() {
                 if (response.code() == 200){
                     Log.e("CMNTUPDT", response.body().toString())
                     Log.e("CMNTUPDT", "Comment sent to cloud")
+                    getComment()
                 }
                 else{
                     Log.e("CMNTUPDT", response.code().toString())
