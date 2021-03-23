@@ -12,6 +12,10 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.Constraints
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,34 +31,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var BaseUrl = "https://api.jsonbin.io/"
-
-        val retrofit = Retrofit.Builder()
-                .baseUrl(BaseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-        val service = retrofit.create(UsersService::class.java)
-        val call = service.getUsersList()
-
-        call.enqueue(object : Callback<UsersResponse> {
-            override fun onResponse(call: Call<UsersResponse>, response: Response<UsersResponse>) {
-                if(response.code() === 200){
-                    val usersResponse = response.body()
-                    users = usersResponse!!.users
 
 
-                    for (user in usersResponse.users){
-                        Log.e("USRRSPNS", user.userName)
-                    }
-                }
-            }
 
-            override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
-                Log.e("USRCLL", "Call failed!")
-            }
+        val networkConstraint = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
 
-        })
+        val workGetUsers = OneTimeWorkRequestBuilder<GetUsersWorker>()
+            .setConstraints(networkConstraint)
+            .addTag("getUsers")
+            .build()
+
+        WorkManager.getInstance().enqueue(workGetUsers)
+
+        val workInfo = WorkManager.getInstance().getWorkInfoById(workGetUsers.id).get()
+//        users = workInfo.outputData.getString().to
+
+
 
 
 
@@ -83,20 +77,24 @@ class MainActivity : AppCompatActivity() {
         val username = findViewById<EditText>(R.id.editTextTextPersonName3).text.toString()
         val password = findViewById<EditText>(R.id.editTextTextPassword).text.toString()
 
-        try {
 
+
+
+
+        try {
             for (user in users){
                 if(user.userName == username && user.password == password){
-                    val intent = Intent(this, RestaurantMain::class.java)
+                    val intent = Intent(baseContext, RestaurantMain::class.java)
                     intent.putExtra("UserId", username)
                     startActivity(intent)
                     return
                 }
                 else{
-                    Toast.makeText(this,"Invalid username or password!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext,"Invalid username or password!", Toast.LENGTH_SHORT).show()
                 }
             }
-        }catch (e : IllegalStateException){
+
+        }catch (e : UninitializedPropertyAccessException){
             Toast.makeText(this,"Check network!", Toast.LENGTH_SHORT).show()
         }
     }
